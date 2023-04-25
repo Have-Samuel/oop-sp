@@ -78,10 +78,10 @@
 // // 54
 
 // // Using the above OBJECT LATERAL and turing it into a REUSABLE FUNCTION
-function Triangle(x, y) {
-  this.x = x;
-  this.y = y;
-}
+// function Triangle(x, y) {
+//   this.x = x;
+//   this.y = y;
+// }
 
 // const t1 = new Triangle(3, 4);
 // t1.area();
@@ -90,19 +90,39 @@ function Triangle(x, y) {
 // t2.hypotenuse();
 // // 13
 
-// PROTOTYPES
-Triangle.prototype.hypotenuse = function () {
-  return Math.sqrt(this.x ** 2 + this.y ** 2);
-};
-Triangle.prototype.area = function () {
-  return (this.x * this.y) / 2;
-};
+// // PROTOTYPES
+// Triangle.prototype.hypotenuse = function () {
+//   return Math.sqrt(this.x ** 2 + this.y ** 2);
+// };
+// Triangle.prototype.area = function () {
+//   return (this.x * this.y) / 2;
+// };
 
-Triangle(5, 7); // Returns Undefined!
-// Using The NEW OPERATOR
-const tri1 = new Triangle(3, 4);
-tri1.area(); // 6
-tri1.hypotenuse(); // 5
-const tri2 = new Triangle(9, 12);
-tri2.area(); // 54
-tri2.hypotenuse(); // 15
+// Triangle(5, 7); // Returns Undefined!
+// // Using The NEW OPERATOR
+// const tri1 = new Triangle(3, 4);
+// tri1.area(); // 6
+// tri1.hypotenuse(); // 5
+// const tri2 = new Triangle(9, 12);
+// tri2.area(); // 54
+// tri2.hypotenuse(); // 15
+
+// CLASSES
+class Triangle {
+  greet() {
+    console.log('HELOO GUYS!');
+  }
+
+  display() {
+    console.log(`I am a triangle with sides of ${this.x} and ${this.y}`);
+  }
+}
+// INSTANTIATING A CLASS
+const firstTri = new Triangle();
+firstTri.x = 3;
+firstTri.y = 4;
+firstTri.greet(); // HELOO GUYS!
+const secondTri = new Triangle();
+secondTri.x = 9;
+secondTri.y = 12;
+secondTri.greet(); // HELOO GUYS!
