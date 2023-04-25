@@ -159,15 +159,22 @@
 // // VALIDATING DATA
 class Triangle {
   constructor(x, y, z) {
-    if (!Number.isFinite(x) || x <= 0) {
-      throw new Error('Triangle sides must be positive numbers');
+    // Using a LOOP thru [x,y,z] MTD-1
+    for (const side of [x, y, z]) {
+      if (!Number.isFinite(side) || side <= 0) {
+        throw new Error('Triangle sides must be positive numbers');
+      }
     }
-    if (!Number.isFinite(y) || y <= 0) {
-      throw new Error('Triangle sides must be positive numbers');
-    }
-    if (!Number.isFinite(z) || z <= 0) {
-      throw new Error('Triangle sides must be positive numbers');
-    }
+    // MTD-2
+    // if (!Number.isFinite(x) || x <= 0) {
+    //   throw new Error('Triangle sides must be positive numbers');
+    // }
+    // if (!Number.isFinite(y) || y <= 0) {
+    //   throw new Error('Triangle sides must be positive numbers');
+    // }
+    // if (!Number.isFinite(z) || z <= 0) {
+    //   throw new Error('Triangle sides must be positive numbers');
+    // }
     this.x = x;
     this.y = y;
     this.z = z;
