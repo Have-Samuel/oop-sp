@@ -190,53 +190,9 @@
 // }
 
 // METHODS IN CLASSES
-// class Triangle {
-//   constructor(x, y, z) {
-//     if (!Number.isFinite(x) || x <= 0) {
-//       throw new Error('Triangle sides must be positive numbers');
-//     }
-//     if (!Number.isFinite(y) || y <= 0) {
-//       throw new Error('Triangle sides must be positive numbers');
-//     }
-//     if (!Number.isFinite(z) || z <= 0) {
-//       throw new Error('Triangle sides must be positive numbers');
-//     }
-//     this.x = x;
-//     this.y = y;
-//     this.z = z;
-//   }
-
-//   greet() {
-//     console.log('HELOO GUYS!');
-//   }
-
-//   display() {
-//     console.log(`I am a triangle with sides of ${this.x}, ${this.x}, and ${this.z}`);
-//   }
-
-//   getArea() {
-//     const { x, y, z } = this;
-//     const s = (x + y + z) / 2;
-//     return Math.sqrt(s * (s - x) * (s - y) * (s - z));
-//   }
-
-//   // CALLING A METHOD WITHIN AN INSATNCE
-//   isBig() {
-//     return this.getArea() > 60;
-//   }
-// }
-
-// const t1 = new Triangle(3, 4, 5);
-// t1.display(3, 4, 5); // 6
-// const t2 = new Triangle(9, 12, 15);
-// t2.display(9, 12, 15); // 54
-// const t3 = new Triangle(20, 30, 40);
-// t3.display(20, 30, 40);
-
-// EXTENDS_SUPER
 class Triangle {
   constructor(x, y, z) {
-    console.log('INSIDE TRIANGLE CONSTRUCTOR');
+    console.log('INSIDE TRIANGLE CONSTRUCTOR')
     for (const side of [x, y, z]) {
       if (!Number.isFinite(side) || side <= 0) {
         throw new Error('Triangle sides must be positive numbers');
@@ -252,7 +208,7 @@ class Triangle {
   }
 
   display() {
-    console.log(`I am a triangle with sides of ${this.x}, ${this.x}, and ${this.z}`);
+    return `Triangle with sides of ${this.x}, ${this.x}, and ${this.z}`;
   }
 
   getArea() {
@@ -267,14 +223,30 @@ class Triangle {
   }
 }
 
+// const t1 = new Triangle(3, 4, 5);
+// t1.display(3, 4, 5); // 6
+// const t2 = new Triangle(9, 12, 15);
+// t2.display(9, 12, 15); // 54
+// const t3 = new Triangle(20, 30, 40);
+// t3.display(20, 30, 40);
+
+// EXTENDS_SUPER
+// METHODS IN CLASSES
 class RightTriangle extends Triangle {
   constructor(x, y, z) {
-    if (x * x + y * y !== z ** z) {
-      throw new Error('Invalid c side for right triangle!');
+    if (x * x + y * y !== z * z) {
+      throw new Error('Invalid Z side for Right Triangle');
     }
-    console.log('INSIDE RIGHT TRIANGLE CONSTRUCTOR');
+    console.log('INSIDE RIGHT TRIANGLE CONSTRUCTOR')
     super(x, y, z);
+    this.last = z;
+  }
+
+  isRightTriangle() {
+    return true;
+  }
+
+  display() {
+    return 'Right ' + super.display();
   }
 }
-
-// const myTr = new RightTriangle(3, 4, 5);
