@@ -62,17 +62,36 @@
 // area();
 
 // Using THIS
-const rightTriangle = {
-  x: 9,
-  y: 12,
-  hypotenuse() {
+// const rightTriangle = {
+//   x: 9,
+//   y: 12,
+//   hypotenuse() {
+//     return Math.sqrt(this.x ** 2 + this.y ** 2);
+//   },
+//   area() {
+//     return (this.x * this.y) / 2;
+//   },
+// };
+// rightTriangle.hypotenuse();
+// // 15
+// rightTriangle.area();
+// // 54
+
+// Using the above OBJECT LATERAL and turing it into a REUSABLE FUNCTION
+function Triangle(x, y) {
+  this.x = x;
+  this.y = y;
+  this.hypotenuse = function () {
     return Math.sqrt(this.x ** 2 + this.y ** 2);
   },
-  area() {
+  this.area = function () {
     return (this.x * this.y) / 2;
-  },
-};
-rightTriangle.hypotenuse();
-// 15
-rightTriangle.area();
-// 54
+  };
+}
+
+const t1 = new Triangle(3, 4);
+t1.area();
+// 6
+const t2 = new Triangle(5, 12);
+t2.hypotenuse();
+// 13
