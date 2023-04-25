@@ -128,10 +128,44 @@
 // secondTri.greet(); // HELOO GUYS!
 
 // CONSTRUCTORS
+// class Triangle {
+//   constructor(x, y) {
+//     this.x = x;
+//     this.y = y;
+//   }
+
+//   greet() {
+//     console.log('HELOO GUYS!');
+//   }
+
+//   display() {
+//     console.log(`I am a triangle with sides of ${this.x} and ${this.y}`);
+//   }
+// }
+
+// const t1 = new Triangle(3, 4);
+// // undefined
+// const t2 = new Triangle(9, 12);
+// // undefined
+// t1.display();
+// // I am a triangle with sides of 3 and 4
+// t2.display();
+// // I am a triangle with sides of 9 and 12
+// t1.greet();
+// // HELOO GUYS!
+// t2.greet();
+// // HELOO GUYS!
+
+// // VALIDATING DATA
 class Triangle {
-  constructor(x, y) {
+  constructor(x, y, z) {
+    if (!Number.isFinite(x) || x <= 0) {
+      // console.log('Invalid X');
+      throw new Error('Triangle sides must be positive numbers');
+    }
     this.x = x;
     this.y = y;
+    this.z = z;
   }
 
   greet() {
@@ -139,19 +173,6 @@ class Triangle {
   }
 
   display() {
-    console.log(`I am a triangle with sides of ${this.x} and ${this.y}`);
+    console.log(`I am a triangle with sides of ${this.x}, ${this.x}, and ${this.z}`);
   }
 }
-
-const t1 = new Triangle(3, 4);
-// undefined
-const t2 = new Triangle(9, 12);
-// undefined
-t1.display();
-// I am a triangle with sides of 3 and 4
-t2.display();
-// I am a triangle with sides of 9 and 12
-t1.greet();
-// HELOO GUYS!
-t2.greet();
-// HELOO GUYS!
