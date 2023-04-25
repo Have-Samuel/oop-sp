@@ -28,13 +28,51 @@
 
 // MTD III
 // Adding them inline
-const myMath = {
-  add(x, y) {
-    return x + y;
+// const myMath = {
+//   add(x, y) {
+//     return x + y;
+//   },
+//   mult: (x, y) => x * y,
+// };
+// myMath.add(4, 4);
+// // 8
+// myMath.mult(3, 3);
+// // 9
+
+// THIS & METHODS
+// function triangleHypotenuse(x, y) {
+//   return Math.sqrt(x ** 2 + y ** 2);
+// }
+// triangleHypotenuse(3, 4);
+// // 5
+// function triangleArea(x, y) {
+//   return (x * y) / 2;
+// }
+// triangleArea(3, 4);
+// // 6
+
+// const side1 = 3;
+// const side2 = 4;
+// const side3 = triangleHypotenuse(side1, side2);
+
+// side3();
+
+// const area = triangleArea(side1, side2);
+
+// area();
+
+// Using THIS
+const rightTriangle = {
+  x: 9,
+  y: 12,
+  hypotenuse() {
+    return Math.sqrt(this.x ** 2 + this.y ** 2);
   },
-  mult: (x, y) => x * y,
+  area() {
+    return (this.x * this.y) / 2;
+  },
 };
-myMath.add(4, 4);
-// 8
-myMath.mult(3, 3);
-// 9
+rightTriangle.hypotenuse();
+// 15
+rightTriangle.area();
+// 54
