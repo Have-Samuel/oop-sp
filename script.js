@@ -28,13 +28,25 @@
 
 // MTD III
 // Adding them inline
-const myMath = {
-  add(x, y) {
-    return x + y;
-  },
-  mult: (x, y) => x * y,
-};
-myMath.add(4, 4);
-// 8
-myMath.mult(3, 3);
-// 9
+// const myMath = {
+//   add(x, y) {
+//     return x + y;
+//   },
+//   mult: (x, y) => x * y,
+// };
+// myMath.add(4, 4);
+// // 8
+// myMath.mult(3, 3);
+// // 9
+
+// THIS & METHODS
+function triangleHypotenuse(x, y) {
+  return Math.sqrt(x ** 2 + y ** 2);
+}
+triangleHypotenuse(3, 4);
+// 5
+function triangleArea(x, y) {
+  return (x * y) / 2;
+}
+triangleArea(3, 4);
+// 6
