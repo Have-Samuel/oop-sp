@@ -160,7 +160,12 @@
 class Triangle {
   constructor(x, y, z) {
     if (!Number.isFinite(x) || x <= 0) {
-      // console.log('Invalid X');
+      throw new Error('Triangle sides must be positive numbers');
+    }
+    if (!Number.isFinite(y) || y <= 0) {
+      throw new Error('Triangle sides must be positive numbers');
+    }
+    if (!Number.isFinite(z) || z <= 0) {
       throw new Error('Triangle sides must be positive numbers');
     }
     this.x = x;
