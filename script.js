@@ -77,21 +77,32 @@
 // rightTriangle.area();
 // // 54
 
-// Using the above OBJECT LATERAL and turing it into a REUSABLE FUNCTION
+// // Using the above OBJECT LATERAL and turing it into a REUSABLE FUNCTION
 function Triangle(x, y) {
   this.x = x;
   this.y = y;
-  this.hypotenuse = function () {
-    return Math.sqrt(this.x ** 2 + this.y ** 2);
-  },
-  this.area = function () {
-    return (this.x * this.y) / 2;
-  };
 }
 
-const t1 = new Triangle(3, 4);
-t1.area();
-// 6
-const t2 = new Triangle(5, 12);
-t2.hypotenuse();
-// 13
+// const t1 = new Triangle(3, 4);
+// t1.area();
+// // 6
+// const t2 = new Triangle(5, 12);
+// t2.hypotenuse();
+// // 13
+
+// PROTOTYPES
+Triangle.prototype.hypotenuse = function () {
+  return Math.sqrt(this.x ** 2 + this.y ** 2);
+};
+Triangle.prototype.area = function () {
+  return (this.x * this.y) / 2;
+};
+
+Triangle(5, 7); // Returns Undefined!
+// Using The NEW OPERATOR
+const tri1 = new Triangle(3, 4);
+tri1.area(); // 6
+tri1.hypotenuse(); // 5
+const tri2 = new Triangle(9, 12);
+tri2.area(); // 54
+tri2.hypotenuse(); // 15
