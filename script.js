@@ -108,7 +108,32 @@
 // tri2.hypotenuse(); // 15
 
 // CLASSES
+// class Triangle {
+//   greet() {
+//     console.log('HELOO GUYS!');
+//   }
+
+//   display() {
+//     console.log(`I am a triangle with sides of ${this.x} and ${this.y}`);
+//   }
+// }
+// // INSTANTIATING A CLASS
+// const firstTri = new Triangle();
+// firstTri.x = 3;
+// firstTri.y = 4;
+// firstTri.greet(); // HELOO GUYS!
+// const secondTri = new Triangle();
+// secondTri.x = 9;
+// secondTri.y = 12;
+// secondTri.greet(); // HELOO GUYS!
+
+// CONSTRUCTORS
 class Triangle {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
   greet() {
     console.log('HELOO GUYS!');
   }
@@ -117,12 +142,16 @@ class Triangle {
     console.log(`I am a triangle with sides of ${this.x} and ${this.y}`);
   }
 }
-// INSTANTIATING A CLASS
-const firstTri = new Triangle();
-firstTri.x = 3;
-firstTri.y = 4;
-firstTri.greet(); // HELOO GUYS!
-const secondTri = new Triangle();
-secondTri.x = 9;
-secondTri.y = 12;
-secondTri.greet(); // HELOO GUYS!
+
+const t1 = new Triangle(3, 4);
+// undefined
+const t2 = new Triangle(9, 12);
+// undefined
+t1.display();
+// I am a triangle with sides of 3 and 4
+t2.display();
+// I am a triangle with sides of 9 and 12
+t1.greet();
+// HELOO GUYS!
+t2.greet();
+// HELOO GUYS!
