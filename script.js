@@ -1,11 +1,11 @@
 // Adding functions as Methods
-const add = (x, y) => (x + y);
-const mult = (x, y) => (x * y);
-const sqr = (x) => (x * x);
-const pwr = (x, y) => (x ** y);
+// const add = (x, y) => (x + y);
+// const mult = (x, y) => (x * y);
+// const sqr = (x) => (x * x);
+// const pwr = (x, y) => (x ** y);
 
 // const myMath = {};
-// MTD III
+// MTD I
 // myMath.add = add;
 // myMath.mult = mult;
 // myMath.pwr = pwr;
@@ -25,3 +25,16 @@ const pwr = (x, y) => (x ** y);
 // };
 // myMath.pwr(3, 3);
 // // 27
+
+// MTD III
+// Adding them inline
+const myMath = {
+  add(x, y) {
+    return x + y;
+  },
+  mult: (x, y) => x * y,
+};
+myMath.add(4, 4);
+// 8
+myMath.mult(3, 3);
+// 9
