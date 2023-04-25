@@ -108,21 +108,83 @@
 // tri2.hypotenuse(); // 15
 
 // CLASSES
+// class Triangle {
+//   greet() {
+//     console.log('HELOO GUYS!');
+//   }
+
+//   display() {
+//     console.log(`I am a triangle with sides of ${this.x} and ${this.y}`);
+//   }
+// }
+// // INSTANTIATING A CLASS
+// const firstTri = new Triangle();
+// firstTri.x = 3;
+// firstTri.y = 4;
+// firstTri.greet(); // HELOO GUYS!
+// const secondTri = new Triangle();
+// secondTri.x = 9;
+// secondTri.y = 12;
+// secondTri.greet(); // HELOO GUYS!
+
+// CONSTRUCTORS
+// class Triangle {
+//   constructor(x, y) {
+//     this.x = x;
+//     this.y = y;
+//   }
+
+//   greet() {
+//     console.log('HELOO GUYS!');
+//   }
+
+//   display() {
+//     console.log(`I am a triangle with sides of ${this.x} and ${this.y}`);
+//   }
+// }
+
+// const t1 = new Triangle(3, 4);
+// // undefined
+// const t2 = new Triangle(9, 12);
+// // undefined
+// t1.display();
+// // I am a triangle with sides of 3 and 4
+// t2.display();
+// // I am a triangle with sides of 9 and 12
+// t1.greet();
+// // HELOO GUYS!
+// t2.greet();
+// // HELOO GUYS!
+
+// // VALIDATING DATA
 class Triangle {
+  constructor(x, y, z) {
+    // Using a LOOP thru [x,y,z] MTD-1
+    for (const side of [x, y, z]) {
+      if (!Number.isFinite(side) || side <= 0) {
+        throw new Error('Triangle sides must be positive numbers');
+      }
+    }
+    // MTD-2
+    // if (!Number.isFinite(x) || x <= 0) {
+    //   throw new Error('Triangle sides must be positive numbers');
+    // }
+    // if (!Number.isFinite(y) || y <= 0) {
+    //   throw new Error('Triangle sides must be positive numbers');
+    // }
+    // if (!Number.isFinite(z) || z <= 0) {
+    //   throw new Error('Triangle sides must be positive numbers');
+    // }
+    this.x = x;
+    this.y = y;
+    this.z = z;
+  }
+
   greet() {
     console.log('HELOO GUYS!');
   }
 
   display() {
-    console.log(`I am a triangle with sides of ${this.x} and ${this.y}`);
+    console.log(`I am a triangle with sides of ${this.x}, ${this.x}, and ${this.z}`);
   }
 }
-// INSTANTIATING A CLASS
-const firstTri = new Triangle();
-firstTri.x = 3;
-firstTri.y = 4;
-firstTri.greet(); // HELOO GUYS!
-const secondTri = new Triangle();
-secondTri.x = 9;
-secondTri.y = 12;
-secondTri.greet(); // HELOO GUYS!
