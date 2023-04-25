@@ -157,24 +157,50 @@
 // // HELOO GUYS!
 
 // // VALIDATING DATA
+// class Triangle {
+//   constructor(x, y, z) {
+//     // Using a LOOP thru [x,y,z] MTD-1
+//     for (const side of [x, y, z]) {
+//       if (!Number.isFinite(side) || side <= 0) {
+//         throw new Error('Triangle sides must be positive numbers');
+//       }
+//     }
+//     // MTD-2
+//     // if (!Number.isFinite(x) || x <= 0) {
+//     //   throw new Error('Triangle sides must be positive numbers');
+//     // }
+//     // if (!Number.isFinite(y) || y <= 0) {
+//     //   throw new Error('Triangle sides must be positive numbers');
+//     // }
+//     // if (!Number.isFinite(z) || z <= 0) {
+//     //   throw new Error('Triangle sides must be positive numbers');
+//     // }
+//     this.x = x;
+//     this.y = y;
+//     this.z = z;
+//   }
+
+//   greet() {
+//     console.log('HELOO GUYS!');
+//   }
+
+//   display() {
+//     console.log(`I am a triangle with sides of ${this.x}, ${this.x}, and ${this.z}`);
+//   }
+// }
+
+// METHODS IN CLASSES
 class Triangle {
   constructor(x, y, z) {
-    // Using a LOOP thru [x,y,z] MTD-1
-    for (const side of [x, y, z]) {
-      if (!Number.isFinite(side) || side <= 0) {
-        throw new Error('Triangle sides must be positive numbers');
-      }
+    if (!Number.isFinite(x) || x <= 0) {
+      throw new Error('Triangle sides must be positive numbers');
     }
-    // MTD-2
-    // if (!Number.isFinite(x) || x <= 0) {
-    //   throw new Error('Triangle sides must be positive numbers');
-    // }
-    // if (!Number.isFinite(y) || y <= 0) {
-    //   throw new Error('Triangle sides must be positive numbers');
-    // }
-    // if (!Number.isFinite(z) || z <= 0) {
-    //   throw new Error('Triangle sides must be positive numbers');
-    // }
+    if (!Number.isFinite(y) || y <= 0) {
+      throw new Error('Triangle sides must be positive numbers');
+    }
+    if (!Number.isFinite(z) || z <= 0) {
+      throw new Error('Triangle sides must be positive numbers');
+    }
     this.x = x;
     this.y = y;
     this.z = z;
@@ -187,4 +213,15 @@ class Triangle {
   display() {
     console.log(`I am a triangle with sides of ${this.x}, ${this.x}, and ${this.z}`);
   }
+
+  getArea() {
+    const { x, y, z } = this;
+    const s = (x + y + z) / 2;
+    return Math.sqrt(s * (s - x) * (s - y) * (s - z));
+  }
 }
+
+const t1 = new Triangle(3, 4, 5);
+t1.display(3, 4, 5); // 6
+const t2 = new Triangle(9, 12, 15);
+t2.display(9, 12, 15); // 54
