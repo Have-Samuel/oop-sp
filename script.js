@@ -219,9 +219,16 @@ class Triangle {
     const s = (x + y + z) / 2;
     return Math.sqrt(s * (s - x) * (s - y) * (s - z));
   }
+
+  // CALLING A METHOD WITHIN AN INSATNCE
+  isBig() {
+    return this.getArea() > 60;
+  }
 }
 
 const t1 = new Triangle(3, 4, 5);
 t1.display(3, 4, 5); // 6
 const t2 = new Triangle(9, 12, 15);
 t2.display(9, 12, 15); // 54
+const t3 = new Triangle(20, 30, 40);
+t3.display(20, 30, 40);
