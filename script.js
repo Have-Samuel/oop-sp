@@ -189,39 +189,39 @@
 //   }
 // }
 
-// METHODS IN CLASSES
-class Triangle {
-  constructor(x, y, z) {
-    console.log('INSIDE TRIANGLE CONSTRUCTOR')
-    for (const side of [x, y, z]) {
-      if (!Number.isFinite(side) || side <= 0) {
-        throw new Error('Triangle sides must be positive numbers');
-      }
-    }
-    this.x = x;
-    this.y = y;
-    this.z = z;
-  }
+// // METHODS IN CLASSES
+// class Triangle {
+//   constructor(x, y, z) {
+//     console.log('INSIDE TRIANGLE CONSTRUCTOR')
+//     for (const side of [x, y, z]) {
+//       if (!Number.isFinite(side) || side <= 0) {
+//         throw new Error('Triangle sides must be positive numbers');
+//       }
+//     }
+//     this.x = x;
+//     this.y = y;
+//     this.z = z;
+//   }
 
-  greet() {
-    console.log('HELOO GUYS!');
-  }
+//   greet() {
+//     console.log('HELOO GUYS!');
+//   }
 
-  display() {
-    return `Triangle with sides of ${this.x}, ${this.x}, and ${this.z}`;
-  }
+//   display() {
+//     return `Triangle with sides of ${this.x}, ${this.x}, and ${this.z}`;
+//   }
 
-  getArea() {
-    const { x, y, z } = this;
-    const s = (x + y + z) / 2;
-    return Math.sqrt(s * (s - x) * (s - y) * (s - z));
-  }
+//   getArea() {
+//     const { x, y, z } = this;
+//     const s = (x + y + z) / 2;
+//     return Math.sqrt(s * (s - x) * (s - y) * (s - z));
+//   }
 
-  // CALLING A METHOD WITHIN AN INSATNCE
-  isBig() {
-    return this.getArea() > 60;
-  }
-}
+//   // CALLING A METHOD WITHIN AN INSATNCE
+//   isBig() {
+//     return this.getArea() > 60;
+//   }
+// }
 
 // const t1 = new Triangle(3, 4, 5);
 // t1.display(3, 4, 5); // 6
@@ -232,21 +232,43 @@ class Triangle {
 
 // EXTENDS_SUPER
 // METHODS IN CLASSES
-class RightTriangle extends Triangle {
-  constructor(x, y, z) {
-    if (x * x + y * y !== z * z) {
-      throw new Error('Invalid Z side for Right Triangle');
-    }
-    console.log('INSIDE RIGHT TRIANGLE CONSTRUCTOR')
-    super(x, y, z);
-    this.last = z;
+// class RightTriangle extends Triangle {
+//   constructor(x, y, z) {
+//     if (x * x + y * y !== z * z) {
+//       throw new Error('Invalid Z side for Right Triangle');
+//     }
+//     console.log('INSIDE RIGHT TRIANGLE CONSTRUCTOR')
+//     super(x, y, z);
+//     this.last = z;
+//   }
+
+//   isRightTriangle() {
+//     return true;
+//   }
+
+//   display() {
+//     return 'Right ' + super.display();
+//   }
+// }
+
+// OOP CHALLENGE
+class Vehicle {
+  constructor(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
   }
 
-  isRightTriangle() {
-    return true;
+  honk() {
+    return 'Beep.';
   }
 
-  display() {
-    return 'Right ' + super.display();
+  toString() {
+    return `The vehicle is a ${this.make}, ${this.model}, from ${this.year}`;
   }
 }
+
+const myFirstVehicle = new Vehicle('Honda', 'Monster Truck', 1999);
+myFirstVehicle.honk(); // Beep
+
+myFirstVehicle.toString(); // The vehicle is a Honda Monster Truck from 1999.
