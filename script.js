@@ -189,39 +189,39 @@
 //   }
 // }
 
-// METHODS IN CLASSES
-class Triangle {
-  constructor(x, y, z) {
-    console.log('INSIDE TRIANGLE CONSTRUCTOR')
-    for (const side of [x, y, z]) {
-      if (!Number.isFinite(side) || side <= 0) {
-        throw new Error('Triangle sides must be positive numbers');
-      }
-    }
-    this.x = x;
-    this.y = y;
-    this.z = z;
-  }
+// // METHODS IN CLASSES
+// class Triangle {
+//   constructor(x, y, z) {
+//     console.log('INSIDE TRIANGLE CONSTRUCTOR')
+//     for (const side of [x, y, z]) {
+//       if (!Number.isFinite(side) || side <= 0) {
+//         throw new Error('Triangle sides must be positive numbers');
+//       }
+//     }
+//     this.x = x;
+//     this.y = y;
+//     this.z = z;
+//   }
 
-  greet() {
-    console.log('HELOO GUYS!');
-  }
+//   greet() {
+//     console.log('HELOO GUYS!');
+//   }
 
-  display() {
-    return `Triangle with sides of ${this.x}, ${this.x}, and ${this.z}`;
-  }
+//   display() {
+//     return `Triangle with sides of ${this.x}, ${this.x}, and ${this.z}`;
+//   }
 
-  getArea() {
-    const { x, y, z } = this;
-    const s = (x + y + z) / 2;
-    return Math.sqrt(s * (s - x) * (s - y) * (s - z));
-  }
+//   getArea() {
+//     const { x, y, z } = this;
+//     const s = (x + y + z) / 2;
+//     return Math.sqrt(s * (s - x) * (s - y) * (s - z));
+//   }
 
-  // CALLING A METHOD WITHIN AN INSATNCE
-  isBig() {
-    return this.getArea() > 60;
-  }
-}
+//   // CALLING A METHOD WITHIN AN INSATNCE
+//   isBig() {
+//     return this.getArea() > 60;
+//   }
+// }
 
 // const t1 = new Triangle(3, 4, 5);
 // t1.display(3, 4, 5); // 6
@@ -232,21 +232,115 @@ class Triangle {
 
 // EXTENDS_SUPER
 // METHODS IN CLASSES
-class RightTriangle extends Triangle {
-  constructor(x, y, z) {
-    if (x * x + y * y !== z * z) {
-      throw new Error('Invalid Z side for Right Triangle');
-    }
-    console.log('INSIDE RIGHT TRIANGLE CONSTRUCTOR')
-    super(x, y, z);
-    this.last = z;
+// class RightTriangle extends Triangle {
+//   constructor(x, y, z) {
+//     if (x * x + y * y !== z * z) {
+//       throw new Error('Invalid Z side for Right Triangle');
+//     }
+//     console.log('INSIDE RIGHT TRIANGLE CONSTRUCTOR')
+//     super(x, y, z);
+//     this.last = z;
+//   }
+
+//   isRightTriangle() {
+//     return true;
+//   }
+
+//   display() {
+//     return 'Right ' + super.display();
+//   }
+// }
+
+// OOP CHALLENGE
+// PART 1
+class Vehicle {
+  constructor(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
   }
 
-  isRightTriangle() {
-    return true;
+  honk() {
+    return 'Beep.';
   }
 
-  display() {
-    return 'Right ' + super.display();
+  toString() {
+    return `The vehicle is a ${this.make}, ${this.model}, from ${this.year}`;
   }
 }
+
+const myFirstVehicle = new Vehicle('Honda', 'Monster Truck', 1999);
+myFirstVehicle.honk(); // Beep
+
+myFirstVehicle.toString(); // The vehicle is a Honda Monster Truck from 1999.
+
+// PART 2
+// Create a class for a car. The Car class should inherit from Vehicle and
+// each car instance should have a property called numWheels which has a value of 4.
+
+class Car extends Vehicle {
+  constructor(make, model, year) {
+    super(make, model, year);
+    this.numWheels = 4;
+  }
+}
+
+// PART 3
+// Create a class for a Motorcycle.
+// This class should inherit from Vehicle and
+// each motorcycle instance should have a property called numWheels
+// which has a value of 2.
+// It should also have a revEngine method which returns “VROOM!!!”
+
+class Motorcycle extends Vehicle {
+  constructor(make, model, year) {
+    super(make, model, year);
+    this.numWheels = 2;
+  }
+
+  revEngine() {
+    return 'VROOM!!!';
+  }
+}
+
+// PART 4
+// Create a class for a Garage.
+// It should have a property called vehicles which will store an array of vehicles,
+// and a property called capacity which is a number indicating how many vehicles
+// will fit in the garage. When you create a garage, vehicles will always be empty;
+// you only need to provide the capacity.
+
+// A garage should also have an add method,
+// which attempts to add a vehicle to the array of vehicles.
+// However, if you try to add something which is not a vehicle,
+// the garage should return the message “Only vehicles are allowed in here!”.
+// Also, if the garage is at capacity, it should say “Sorry, we’re full.”
+
+class Garage {
+  constructor(capacity) {
+    this.vehicles = [];
+    this.capacity = capacity;
+  }
+
+  add(newVehicle) {
+    if (!(newVehicle instanceof Vehicle)) {
+      return 'Only vehicles are allowed in here!';
+    }
+    if (this.vehicles.length >= this.capacity) {
+      return 'Sorry, we’re full.';
+    }
+    this.vehicles.push(newVehicle);
+    return 'Vehicle added!';
+  }
+}
+
+const garage = new Garage(2);
+garage.vehicles; // []
+garage.add(new Car('Hyundai', 'Elantra', 2015)); // "Vehicle added!"
+garage.vehicles; // [Car]
+garage.add('Taco'); // "Only vehicles are allowed in here!"
+garage.add(new Motorcycle('Honda', 'Nighthawk', 2000));
+// "Vehicle added!"
+garage.vehicles; // [Car, Motorcycle]
+garage.add(new Motorcycle('Honda', 'Nighthawk', 2001));
+// "Sorry, we're full."
