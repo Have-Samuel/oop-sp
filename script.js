@@ -252,6 +252,7 @@
 // }
 
 // OOP CHALLENGE
+// PART 1
 class Vehicle {
   constructor(make, model, year) {
     this.make = make;
@@ -272,3 +273,14 @@ const myFirstVehicle = new Vehicle('Honda', 'Monster Truck', 1999);
 myFirstVehicle.honk(); // Beep
 
 myFirstVehicle.toString(); // The vehicle is a Honda Monster Truck from 1999.
+
+// PART 2
+// Create a class for a car. The Car class should inherit from Vehicle and
+// each car instance should have a property called numWheels which has a value of 4.
+
+class Car extends Vehicle{
+  constructor(make, model, year) {
+    super(make, model, year)
+    this.numWheels = 4;
+  }
+}
