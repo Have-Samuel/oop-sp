@@ -253,94 +253,126 @@
 
 // OOP CHALLENGE
 // PART 1
-class Vehicle {
-  constructor(make, model, year) {
-    this.make = make;
-    this.model = model;
-    this.year = year;
-  }
+// class Vehicle {
+//   constructor(make, model, year) {
+//     this.make = make;
+//     this.model = model;
+//     this.year = year;
+//   }
 
-  honk() {
-    return 'Beep.';
-  }
+//   honk() {
+//     return 'Beep.';
+//   }
 
-  toString() {
-    return `The vehicle is a ${this.make}, ${this.model}, from ${this.year}`;
+//   toString() {
+//     return `The vehicle is a ${this.make}, ${this.model}, from ${this.year}`;
+//   }
+// }
+
+// const myFirstVehicle = new Vehicle('Honda', 'Monster Truck', 1999);
+// myFirstVehicle.honk(); // Beep
+
+// myFirstVehicle.toString(); // The vehicle is a Honda Monster Truck from 1999.
+
+// // PART 2
+// // Create a class for a car. The Car class should inherit from Vehicle and
+// // each car instance should have a property called numWheels which has a value of 4.
+
+// class Car extends Vehicle {
+//   constructor(make, model, year) {
+//     super(make, model, year);
+//     this.numWheels = 4;
+//   }
+// }
+
+// // PART 3
+// // Create a class for a Motorcycle.
+// // This class should inherit from Vehicle and
+// // each motorcycle instance should have a property called numWheels
+// // which has a value of 2.
+// // It should also have a revEngine method which returns “VROOM!!!”
+
+// class Motorcycle extends Vehicle {
+//   constructor(make, model, year) {
+//     super(make, model, year);
+//     this.numWheels = 2;
+//   }
+
+//   revEngine() {
+//     return 'VROOM!!!';
+//   }
+// }
+
+// // PART 4
+// // Create a class for a Garage.
+// // It should have a property called vehicles which will store an array of vehicles,
+// // and a property called capacity which is a number indicating how many vehicles
+// // will fit in the garage. When you create a garage, vehicles will always be empty;
+// // you only need to provide the capacity.
+
+// // A garage should also have an add method,
+// // which attempts to add a vehicle to the array of vehicles.
+// // However, if you try to add something which is not a vehicle,
+// // the garage should return the message “Only vehicles are allowed in here!”.
+// // Also, if the garage is at capacity, it should say “Sorry, we’re full.”
+
+// class Garage {
+//   constructor(capacity) {
+//     this.vehicles = [];
+//     this.capacity = capacity;
+//   }
+
+//   add(newVehicle) {
+//     if (!(newVehicle instanceof Vehicle)) {
+//       return 'Only vehicles are allowed in here!';
+//     }
+//     if (this.vehicles.length >= this.capacity) {
+//       return 'Sorry, we’re full.';
+//     }
+//     this.vehicles.push(newVehicle);
+//     return 'Vehicle added!';
+//   }
+// }
+
+// const garage = new Garage(2);
+// garage.vehicles; // []
+// garage.add(new Car('Hyundai', 'Elantra', 2015)); // "Vehicle added!"
+// garage.vehicles; // [Car]
+// garage.add('Taco'); // "Only vehicles are allowed in here!"
+// garage.add(new Motorcycle('Honda', 'Nighthawk', 2000));
+// // "Vehicle added!"
+// garage.vehicles; // [Car, Motorcycle]
+// garage.add(new Motorcycle('Honda', 'Nighthawk', 2001));
+// // "Sorry, we're full."
+
+// THIS KEYWORD
+const cat = {
+  name: 'Oxen',
+  breed: 'French',
+  dance: function(dance) {
+    console.log('THIS IS:', this);
+    console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
   }
 }
 
-const myFirstVehicle = new Vehicle('Honda', 'Monster Truck', 1999);
-myFirstVehicle.honk(); // Beep
+// cat.name(); // Oxen
+// cat.breed(); // French
+// cat.dance();
+// (dance) {
+// console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
 
-myFirstVehicle.toString(); // The vehicle is a Honda Monster Truck from 1999.
+const catsCopy = cat.dance;
+// cat.dance === catsCopy
+// true
 
-// PART 2
-// Create a class for a car. The Car class should inherit from Vehicle and
-// each car instance should have a property called numWheels which has a value of 4.
+// catsCopy('tango');
+// Meow, I am undefined and I like tango!!.
+// cat.dance('tango');
+// Meow, I am Oxen and I like tango!!.
 
-class Car extends Vehicle {
-  constructor(make, model, year) {
-    super(make, model, year);
-    this.numWheels = 4;
-  }
-}
+// REASONS FOR USING THIS
 
-// PART 3
-// Create a class for a Motorcycle.
-// This class should inherit from Vehicle and
-// each motorcycle instance should have a property called numWheels
-// which has a value of 2.
-// It should also have a revEngine method which returns “VROOM!!!”
+// const catsCopy = cat.dance; // We are just storing the function in a variable and executing it.
+// catsCopy('tango'); // And getting a different result.
+// Meow, I am undefined and I like tango!!.
 
-class Motorcycle extends Vehicle {
-  constructor(make, model, year) {
-    super(make, model, year);
-    this.numWheels = 2;
-  }
-
-  revEngine() {
-    return 'VROOM!!!';
-  }
-}
-
-// PART 4
-// Create a class for a Garage.
-// It should have a property called vehicles which will store an array of vehicles,
-// and a property called capacity which is a number indicating how many vehicles
-// will fit in the garage. When you create a garage, vehicles will always be empty;
-// you only need to provide the capacity.
-
-// A garage should also have an add method,
-// which attempts to add a vehicle to the array of vehicles.
-// However, if you try to add something which is not a vehicle,
-// the garage should return the message “Only vehicles are allowed in here!”.
-// Also, if the garage is at capacity, it should say “Sorry, we’re full.”
-
-class Garage {
-  constructor(capacity) {
-    this.vehicles = [];
-    this.capacity = capacity;
-  }
-
-  add(newVehicle) {
-    if (!(newVehicle instanceof Vehicle)) {
-      return 'Only vehicles are allowed in here!';
-    }
-    if (this.vehicles.length >= this.capacity) {
-      return 'Sorry, we’re full.';
-    }
-    this.vehicles.push(newVehicle);
-    return 'Vehicle added!';
-  }
-}
-
-const garage = new Garage(2);
-garage.vehicles; // []
-garage.add(new Car('Hyundai', 'Elantra', 2015)); // "Vehicle added!"
-garage.vehicles; // [Car]
-garage.add('Taco'); // "Only vehicles are allowed in here!"
-garage.add(new Motorcycle('Honda', 'Nighthawk', 2000));
-// "Vehicle added!"
-garage.vehicles; // [Car, Motorcycle]
-garage.add(new Motorcycle('Honda', 'Nighthawk', 2001));
-// "Sorry, we're full."
