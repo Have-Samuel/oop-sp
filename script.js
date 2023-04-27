@@ -344,3 +344,13 @@
 // garage.vehicles; // [Car, Motorcycle]
 // garage.add(new Motorcycle('Honda', 'Nighthawk', 2001));
 // // "Sorry, we're full."
+
+// THIS KEYWORD
+const cat = {
+  name: 'Oxen',
+  breed: 'French',
+  dance: function(dance) {
+    console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
+  }
+
+}
