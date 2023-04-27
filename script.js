@@ -350,7 +350,29 @@ const cat = {
   name: 'Oxen',
   breed: 'French',
   dance: function(dance) {
+    console.log('THIS IS:', this);
     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
   }
-
 }
+
+// cat.name(); // Oxen
+// cat.breed(); // French
+// cat.dance();
+// (dance) {
+// console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
+
+const catsCopy = cat.dance;
+// cat.dance === catsCopy
+// true
+
+// catsCopy('tango');
+// Meow, I am undefined and I like tango!!.
+// cat.dance('tango');
+// Meow, I am Oxen and I like tango!!.
+
+// REASONS FOR USING THIS
+
+// const catsCopy = cat.dance; // We are just storing the function in a variable and executing it.
+// catsCopy('tango'); // And getting a different result.
+// Meow, I am undefined and I like tango!!.
+
