@@ -346,14 +346,14 @@
 // // "Sorry, we're full."
 
 // THIS KEYWORD
-const cat = {
-  name: 'Oxen',
-  breed: 'French',
-  dance: function(dance) {
-    console.log('THIS IS:', this);
-    console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
-  }
-}
+// const cat = {
+//   name: 'Oxen',
+//   breed: 'French',
+//   dance: function(dance) {
+//     console.log('THIS IS:', this);
+//     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
+//   }
+// }
 
 // cat.name(); // Oxen
 // cat.breed(); // French
@@ -361,7 +361,7 @@ const cat = {
 // (dance) {
 // console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
 
-const catsCopy = cat.dance;
+// const catsCopy = cat.dance;
 // cat.dance === catsCopy
 // true
 
@@ -376,3 +376,34 @@ const catsCopy = cat.dance;
 // catsCopy('tango'); // And getting a different result.
 // Meow, I am undefined and I like tango!!.
 
+// THIS-WINDOW_ STUFF
+const cat = {
+  name: 'Oxen',
+  breed: 'French',
+  dance: function(dance) {
+    console.log('THIS IS:', this);
+    console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
+  }
+}
+
+// catsCopy('tango');
+// Meow, I am undefined and I like tango!!.
+// cat.dance('tango');
+// Meow, I am Oxen and I like tango!!.
+
+// Another Function
+function whatIsThis() {
+  console.log('THIS=', this);
+}
+// STORE THE ABOVE IN ANOTHER FUNCTION
+const myObj = {
+  func: whatIsThis,
+  color: 'Mangeta',
+};
+
+cat.dance('Salsa');
+const catsCopy = cat.dance;
+catsCopy('tango');
+
+myObj.func();
+window.func();
