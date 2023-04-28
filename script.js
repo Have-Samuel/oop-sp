@@ -380,11 +380,11 @@
 const cat = {
   name: 'Oxen',
   breed: 'French',
-  dance: function(dance) {
+  dance(dance) {
     console.log('THIS IS:', this);
     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
-  }
-}
+  },
+};
 
 // catsCopy('tango');
 // Meow, I am undefined and I like tango!!.
@@ -406,4 +406,26 @@ const catsCopy = cat.dance;
 catsCopy('tango');
 
 myObj.func();
-window.func();
+// window.func();
+
+// Strict Mode
+// 'use strict';
+class Cat {
+  constructor(name, breed) {
+    this.name = name;
+    this.breed = breed;
+  }
+
+  dance(danceType) {
+    console.log('THIS IS:', this);
+    console.log(`Meow, I am ${this.name} and I like ${danceType}!!.`);
+  }
+}
+
+const funk = new Cat('Funk', 'Italian');
+funk.dance('Salsa');
+// funk is on the left side of the dot which is the object
+
+// If we Isolate the function
+const funkDance = funk.dance;
+funkDance('Salsa');
