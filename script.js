@@ -430,8 +430,59 @@
 // const funkDance = funk.dance;
 // funkDance('Salsa');
 
-// CALL KEYWORD
-const cat = {
+// // CALL KEYWORD
+// const cat = {
+//   name: 'Oxen',
+//   breed: 'French',
+//   dance(dance) {
+//     console.log('THIS IS:', this);
+//     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
+//   },
+//   play: function(...toys) {
+//     for (let toy of toys) {
+//       console.log(`${this.name} plays with ${toy}`)
+//     }
+//   }
+// };
+
+// cat.play('string', 'my pantleg', 'my shoe', 'a ball');
+// // Oxen plays with string
+// // Oxen plays with my pantleg
+// // Oxen plays with my shoe
+// // Oxen plays with a ball
+
+// const dog = {
+//   name: 'Jack',
+//   breed: 'Long Boby',
+// };
+
+// // Call the CALL method on the function
+// cat.play.call(dog, 'DIDI', 'DODO', 'DADA');
+// // Jack plays with DIDI
+// // Jack plays with DODO
+// // Jack plays with DADA
+
+// // const havenDV = cat.dance;
+// // havenDV.call(cat, 'Salsa');
+
+// // const dog = {
+// //   name: 'Jack',
+// //   breed: 'Long Boby',
+// // };
+
+// // havenDV.call(dog, 'Kwasa Kwasa');
+
+// // havenDV.call(window, 'Lingala');
+// // havenDV.call(cat, 'Mpere');
+
+// // function printThis() {
+// //   console.log('THIS ====> ', this);
+// // }
+
+// // printThis.call(cat);
+
+// BIND KEYWORD
+const wax = {
   name: 'Oxen',
   breed: 'French',
   dance(dance) {
@@ -444,39 +495,37 @@ const cat = {
     }
   }
 };
+// In previous examples, we have been calling the function immediately
+// const hen = wax.dance;
+// hen.call(wax, 'dombolo');
 
-cat.play('string', 'my pantleg', 'my shoe', 'a ball');
-// Oxen plays with string
-// Oxen plays with my pantleg
-// Oxen plays with my shoe
-// Oxen plays with a ball
+const bdance = wax.dance;
+const bounceDance = bdance.bind(wax);
+bounceDance('dombolo');
+// Meow, I am Oxen and I like dombolo!!.
+bounceDance('Salsa');
+// Meow, I am Oxen and I like Salsa!!.
+bounceDance('Kwasa Kwasa');
+// Meow, I am Oxen and I like Kwasa Kwasa!!.
 
-const dog = {
-  name: 'Jack',
-  breed: 'Long Boby',
+// ANOTHER EXAMPLE OF OBJECTS
+const rocket = {
+  name: 'Falcon',
+  breed: 'Spacedog',
 };
+// Bind is not calling the function immediately
+// not called one time
+const rocketDance = wax.dance.bind(rocket);
+rocketDance('Hip hop');
 
-// Call the CALL method on the function
-cat.play.call(dog, 'DIDI', 'DODO', 'DADA');
-// Jack plays with DIDI
-// Jack plays with DODO
-// Jack plays with DADA
-
-// const havenDV = cat.dance;
-// havenDV.call(cat, 'Salsa');
-
-// const dog = {
-//   name: 'Jack',
-//   breed: 'Long Boby',
-// };
-
-// havenDV.call(dog, 'Kwasa Kwasa');
-
-// havenDV.call(window, 'Lingala');
-// havenDV.call(cat, 'Mpere');
-
-// function printThis() {
-//   console.log('THIS ====> ', this);
-// }
-
-// printThis.call(cat);
+// Doubleingthe integrity of BIND method by using it twice
+// Add a method to the horse object
+const horse = {
+  name: 'Horse',
+  breed: 'Spacedog',
+  dance: rocketDance,
+};
+// We have bound the value of this to rocket
+// We have bound the value of this to horse
+horse.dance('Tegurara');
+// Meow, I am Falcon and I like Tegurara!!.
