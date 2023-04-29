@@ -482,6 +482,131 @@
 // // printThis.call(cat);
 
 // BIND KEYWORD
+// const wax = {
+//   name: 'Oxen',
+//   breed: 'French',
+//   dance(dance) {
+//     console.log('THIS IS:', this);
+//     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
+//   },
+//   play(...toys) {
+//     for (const toy of toys) {
+//       console.log(`${this.name} plays with ${toy}`);
+//     }
+//   },
+// };
+// // In previous examples, we have been calling the function immediately
+// // const hen = wax.dance;
+// // hen.call(wax, 'dombolo');
+
+// const bdance = wax.dance;
+// const bounceDance = bdance.bind(wax);
+// bounceDance('dombolo');
+// // Meow, I am Oxen and I like dombolo!!.
+// bounceDance('Salsa');
+// // Meow, I am Oxen and I like Salsa!!.
+// bounceDance('Kwasa Kwasa');
+// // Meow, I am Oxen and I like Kwasa Kwasa!!.
+
+// // ANOTHER EXAMPLE OF OBJECTS
+// const rocket = {
+//   name: 'Falcon',
+//   breed: 'Spacedog',
+// };
+// // Bind is not calling the function immediately
+// // not called one time
+// const rocketDance = wax.dance.bind(rocket);
+// rocketDance('Hip hop');
+
+// // Doubleingthe integrity of BIND method by using it twice
+// // Add a method to the horse object
+// const horse = {
+//   name: 'Horse',
+//   breed: 'Spacedog',
+//   dance: rocketDance,
+// };
+// // We have bound the value of this to rocket
+// // We have bound the value of this to horse
+// horse.dance('Tegurara');
+// // Meow, I am Falcon and I like Tegurara!!.
+
+// // BINDING ARGUMENTS
+// // Binding the value of `THIS` and becking in Arguments
+// const glowDisco = wax.dance.bind(wax, 'Glow Disco');
+// glowDisco('GoDown Disco');
+// // Meow, I am Oxen and I like Glow Disco!!.
+// const playWithSocks = wax.play.bind(wax, 'leftSock', 'rightSocks');
+// playWithSocks();
+// // Oxen plays with leftSock
+// // Oxen plays with rightSocks
+
+// // BINDING THIS VALUE & BECKING IN ARGUMENTS
+// function applySalesTax(taxRate, price) {
+//   return price + price * taxRate;
+// }
+// // NULL does not change bse it has no value given
+// const applyCATax = applySalesTax.bind(null, 0.0725);
+// applyCATax(0.0725);
+// // 0.07775625
+
+// // LAST EXAMPLE
+// // const bobsMembership = {
+// //   name: 'Bob',
+// //   total: 250,
+// //   // When method is inside the function
+// //   collectMonthlyFee: function(fee) {
+// //     const remaining = this.total - fee;
+// //     this.total = remaining;
+// //     return this.name + ' remaining balance;' + remaining;
+// //   }
+// // };
+
+// // bobsMembership.collectMonthlyFee(50);
+
+// const bobsMembership = {
+//   name: 'Bob',
+//   total: 250,
+//   // When method is outside the function
+// };
+
+// function collectMonthlyFee(fee) {
+//   const remaining = this.total - fee;
+//   this.total = remaining;
+//   return `${this.name} remaining balance;${remaining}`;
+// }
+
+// // Using the Logic on some other function
+// const adrinesMembership = {
+//   name: 'Adrine',
+//   total: 899,
+// };
+
+// const collectBobsFee = collectMonthlyFee.bind(bobsMembership, 5);
+
+// collectBobsFee();
+// // 'Bob remaining balance;240'
+// collectBobsFee();
+// // 'Bob remaining balance;235'
+// collectBobsFee();
+// // 'Bob remaining balance;230'
+// collectBobsFee();
+// // 'Bob remaining balance;225'
+// bobsMembership();
+// // {name: 'Bob', total: 190}
+// const collectAdrinsFee = collectMonthlyFee.bind(adrinesMembership, 20);
+
+// collectAdrinsFee(20);
+// // 'Adrine remaining balance;879'
+// collectAdrinsFee(20);
+// // 'Adrine remaining balance;859'
+// collectAdrinsFee(20);
+// // 'Adrine remaining balance;839'
+// collectAdrinsFee(20);
+// // 'Adrine remaining balance;819'
+
+// // IF YOU DONT WANT TO PASS IN THE VALUE OF THIS THEN USE NULL
+
+// BINDING CALLBACKS
 const wax = {
   name: 'Oxen',
   breed: 'French',
@@ -494,114 +619,36 @@ const wax = {
       console.log(`${this.name} plays with ${toy}`);
     }
   },
+  greet() {
+    alert(`${this.name} SAYS MEOW!`);
+  },
 };
-// In previous examples, we have been calling the function immediately
-// const hen = wax.dance;
-// hen.call(wax, 'dombolo');
 
-const bdance = wax.dance;
-const bounceDance = bdance.bind(wax);
-bounceDance('dombolo');
-// Meow, I am Oxen and I like dombolo!!.
-bounceDance('Salsa');
-// Meow, I am Oxen and I like Salsa!!.
-bounceDance('Kwasa Kwasa');
-// Meow, I am Oxen and I like Kwasa Kwasa!!.
+document.querySelector('#btn').addEventListener('click', wax.greet.bind(wax));
+// VALUE of wax is not set to THIS
+// Only comes wheen we use bind
 
-// ANOTHER EXAMPLE OF OBJECTS
-const rocket = {
-  name: 'Falcon',
-  breed: 'Spacedog',
-};
-// Bind is not calling the function immediately
-// not called one time
-const rocketDance = wax.dance.bind(rocket);
-rocketDance('Hip hop');
+const btnA = document.querySelector('#a');
+const btnB = document.querySelector('#b');
+const btnC = document.querySelector('#c');
 
-// Doubleingthe integrity of BIND method by using it twice
-// Add a method to the horse object
-const horse = {
-  name: 'Horse',
-  breed: 'Spacedog',
-  dance: rocketDance,
-};
-// We have bound the value of this to rocket
-// We have bound the value of this to horse
-horse.dance('Tegurara');
-// Meow, I am Falcon and I like Tegurara!!.
-
-// BINDING ARGUMENTS
-// Binding the value of `THIS` and becking in Arguments
-const glowDisco = wax.dance.bind(wax, 'Glow Disco');
-glowDisco('GoDown Disco');
-// Meow, I am Oxen and I like Glow Disco!!.
-const playWithSocks = wax.play.bind(wax, 'leftSock', 'rightSocks');
-playWithSocks();
-// Oxen plays with leftSock
-// Oxen plays with rightSocks
-
-// BINDING THIS VALUE & BECKING IN ARGUMENTS
-function applySalesTax(taxRate, price) {
-  return price + price * taxRate;
+function popUp(msg) {
+  alert(`Secret Message is ${msg}.`);
 }
-// NULL does not change bse it has no value given
-const applyCATax = applySalesTax.bind(null, 0.0725);
-applyCATax(0.0725);
-// 0.07775625
+// // Before Using Bind
+// btnA.addEventListener('click', function() {
+//   popUp('BUTTON A SAYS HI!');
+// });
 
-// LAST EXAMPLE
-// const bobsMembership = {
-//   name: 'Bob',
-//   total: 250,
-//   // When method is inside the function
-//   collectMonthlyFee: function(fee) {
-//     const remaining = this.total - fee;
-//     this.total = remaining;
-//     return this.name + ' remaining balance;' + remaining;
-//   }
-// };
+// btnB.addEventListener('click', function() {
+//   popUp('BUTTON B SAYS HI!');
+// });
 
-// bobsMembership.collectMonthlyFee(50);
+// btnC.addEventListener('click', function() {
+//   popUp('BUTTON C SAYS HI!');
+// });
 
-const bobsMembership = {
-  name: 'Bob',
-  total: 250,
-  // When method is outside the function
-};
-
-function collectMonthlyFee(fee) {
-  const remaining = this.total - fee;
-  this.total = remaining;
-  return `${this.name} remaining balance;${remaining}`;
-}
-
-// Using the Logic on some other function
-const adrinesMembership = {
-  name: 'Adrine',
-  total: 899,
-};
-
-const collectBobsFee = collectMonthlyFee.bind(bobsMembership, 5);
-
-collectBobsFee();
-// 'Bob remaining balance;240'
-collectBobsFee();
-// 'Bob remaining balance;235'
-collectBobsFee();
-// 'Bob remaining balance;230'
-collectBobsFee();
-// 'Bob remaining balance;225'
-bobsMembership();
-// {name: 'Bob', total: 190}
-const collectAdrinsFee = collectMonthlyFee.bind(adrinesMembership, 20);
-
-collectAdrinsFee(20);
-// 'Adrine remaining balance;879'
-collectAdrinsFee(20);
-// 'Adrine remaining balance;859'
-collectAdrinsFee(20);
-// 'Adrine remaining balance;839'
-collectAdrinsFee(20);
-// 'Adrine remaining balance;819'
-
-// IF YOU DONT WANT TO PASS IN THE VALUE OF THIS THEN USE NULL
+// Using Bind
+btnA.addEventListener('click', popUp.bind('BUTTON A SAYS HI!'));
+btnB.addEventListener('click', popUp.bind('BUTTON B SAYS HI!'));
+btnC.addEventListener('click', popUp.bind('BUTTON C SAYS HI!'));
