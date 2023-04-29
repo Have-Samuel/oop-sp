@@ -529,3 +529,22 @@ const horse = {
 // We have bound the value of this to horse
 horse.dance('Tegurara');
 // Meow, I am Falcon and I like Tegurara!!.
+
+// BINDING ARGUMENTS
+// Binding the value of `THIS` and becking in Arguments
+const glowDisco = wax.dance.bind(wax, 'Glow Disco');
+glowDisco('GoDown Disco');
+// Meow, I am Oxen and I like Glow Disco!!.
+const playWithSocks = wax.play.bind(wax, 'leftSock', 'rightSocks');
+playWithSocks();
+// Oxen plays with leftSock
+// Oxen plays with rightSocks
+
+// BINDING THIS VALUE & BECKING IN ARGUMENTS
+function applySalesTax(taxRate, price) {
+  return price + price * taxRate;
+}
+// NULL does not change bse it has no value given
+const applyCATax = applySalesTax.bind(null, 0.0725);
+applyCATax(0.0725);
+// 0.07775625
