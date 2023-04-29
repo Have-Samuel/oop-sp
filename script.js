@@ -607,48 +607,80 @@
 // // IF YOU DONT WANT TO PASS IN THE VALUE OF THIS THEN USE NULL
 
 // BINDING CALLBACKS
-const wax = {
-  name: 'Oxen',
-  breed: 'French',
-  dance(dance) {
-    console.log('THIS IS:', this);
-    console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
+// const wax = {
+//   name: 'Oxen',
+//   breed: 'French',
+//   dance(dance) {
+//     console.log('THIS IS:', this);
+//     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
+//   },
+//   play(...toys) {
+//     for (const toy of toys) {
+//       console.log(`${this.name} plays with ${toy}`);
+//     }
+//   },
+//   greet() {
+//     alert(`${this.name} SAYS MEOW!`);
+//   },
+// };
+
+// document.querySelector('#btn').addEventListener('click', wax.greet.bind(wax));
+// // VALUE of wax is not set to THIS
+// // Only comes wheen we use bind
+
+// const btnA = document.querySelector('#a');
+// const btnB = document.querySelector('#b');
+// const btnC = document.querySelector('#c');
+
+// function popUp(msg) {
+//   alert(`Secret Message is ${msg}.`);
+// }
+// // // Before Using Bind
+// // btnA.addEventListener('click', function() {
+// //   popUp('BUTTON A SAYS HI!');
+// // });
+
+// // btnB.addEventListener('click', function() {
+// //   popUp('BUTTON B SAYS HI!');
+// // });
+
+// // btnC.addEventListener('click', function() {
+// //   popUp('BUTTON C SAYS HI!');
+// // });
+
+// // Using Bind
+// btnA.addEventListener('click', popUp.bind('BUTTON A SAYS HI!'));
+// btnB.addEventListener('click', popUp.bind('BUTTON B SAYS HI!'));
+// btnC.addEventListener('click', popUp.bind('BUTTON C SAYS HI!'));
+
+// ARROW FUNCTIONS AND THIS
+const greeter = {
+  msg: 'I Like Chickenz',
+  sayHi: () => {
+    alert(this.msg);
   },
-  play(...toys) {
-    for (const toy of toys) {
-      console.log(`${this.name} plays with ${toy}`);
-    }
-  },
-  greet() {
-    alert(`${this.name} SAYS MEOW!`);
+
+  //   waitAndGreet: function(delay) {
+  //     console.log(this);
+  //    let callback = function() {
+  //     console.log(this);
+  //     alert(this.msg)
+  //    };
+  //     setTimeout(callback.bind(this), delay);
+  //   }
+  // };
+
+  // Use BIND to set the value of THIS
+  // waitAndGreet: function(delay) {
+  //  setTimeout(function() {
+  //   alert(this.msg);
+  //  }.bind(this), delay);
+  // }
+
+  // Using ARROW Functions
+  waitAndGreet(delay) {
+    setTimeout(() => {
+      alert(this.msg);
+    }, delay);
   },
 };
-
-document.querySelector('#btn').addEventListener('click', wax.greet.bind(wax));
-// VALUE of wax is not set to THIS
-// Only comes wheen we use bind
-
-const btnA = document.querySelector('#a');
-const btnB = document.querySelector('#b');
-const btnC = document.querySelector('#c');
-
-function popUp(msg) {
-  alert(`Secret Message is ${msg}.`);
-}
-// // Before Using Bind
-// btnA.addEventListener('click', function() {
-//   popUp('BUTTON A SAYS HI!');
-// });
-
-// btnB.addEventListener('click', function() {
-//   popUp('BUTTON B SAYS HI!');
-// });
-
-// btnC.addEventListener('click', function() {
-//   popUp('BUTTON C SAYS HI!');
-// });
-
-// Using Bind
-btnA.addEventListener('click', popUp.bind('BUTTON A SAYS HI!'));
-btnB.addEventListener('click', popUp.bind('BUTTON B SAYS HI!'));
-btnC.addEventListener('click', popUp.bind('BUTTON C SAYS HI!'));
