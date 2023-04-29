@@ -635,15 +635,20 @@ const btnC = document.querySelector('#c');
 function popUp(msg) {
   alert(`Secret Message is ${msg}.`);
 }
-// Before Using Bind
-btnA.addEventListener('click', function() {
-  popUp('BUTTON A SAYS HI!');
-});
+// // Before Using Bind
+// btnA.addEventListener('click', function() {
+//   popUp('BUTTON A SAYS HI!');
+// });
 
-btnB.addEventListener('click', function() {
-  popUp('BUTTON B SAYS HI!');
-});
+// btnB.addEventListener('click', function() {
+//   popUp('BUTTON B SAYS HI!');
+// });
 
-btnC.addEventListener('click', function() {
-  popUp('BUTTON C SAYS HI!');
-});
+// btnC.addEventListener('click', function() {
+//   popUp('BUTTON C SAYS HI!');
+// });
+
+// Using Bind
+btnA.addEventListener('click', popUp.bind('BUTTON A SAYS HI!'));
+btnB.addEventListener('click', popUp.bind('BUTTON B SAYS HI!'));
+btnC.addEventListener('click', popUp.bind('BUTTON C SAYS HI!'));
