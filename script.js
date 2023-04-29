@@ -376,34 +376,107 @@
 // catsCopy('tango'); // And getting a different result.
 // Meow, I am undefined and I like tango!!.
 
-// THIS-WINDOW_ STUFF
+// // THIS-WINDOW_ STUFF
+// const cat = {
+//   name: 'Oxen',
+//   breed: 'French',
+//   dance(dance) {
+//     console.log('THIS IS:', this);
+//     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
+//   },
+// };
+
+// // catsCopy('tango');
+// // Meow, I am undefined and I like tango!!.
+// // cat.dance('tango');
+// // Meow, I am Oxen and I like tango!!.
+
+// // Another Function
+// function whatIsThis() {
+//   console.log('THIS=', this);
+// }
+// // STORE THE ABOVE IN ANOTHER FUNCTION
+// const myObj = {
+//   func: whatIsThis,
+//   color: 'Mangeta',
+// };
+
+// cat.dance('Salsa');
+// const catsCopy = cat.dance;
+// catsCopy('tango');
+
+// myObj.func();
+// // window.func();
+
+// // Strict Mode
+// // 'use strict';
+// class Cat {
+//   constructor(name, breed) {
+//     this.name = name;
+//     this.breed = breed;
+//   }
+
+//   dance(danceType) {
+//     console.log('THIS IS:', this);
+//     console.log(`Meow, I am ${this.name} and I like ${danceType}!!.`);
+//   }
+// }
+
+// const funk = new Cat('Funk', 'Italian');
+// funk.dance('Salsa');
+// // funk is on the left side of the dot which is the object
+
+// // If we Isolate the function
+// const funkDance = funk.dance;
+// funkDance('Salsa');
+
+// CALL KEYWORD
 const cat = {
   name: 'Oxen',
   breed: 'French',
-  dance: function(dance) {
+  dance(dance) {
     console.log('THIS IS:', this);
     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
+  },
+  play: function(...toys) {
+    for (let toy of toys) {
+      console.log(`${this.name} plays with ${toy}`)
+    }
   }
-}
-
-// catsCopy('tango');
-// Meow, I am undefined and I like tango!!.
-// cat.dance('tango');
-// Meow, I am Oxen and I like tango!!.
-
-// Another Function
-function whatIsThis() {
-  console.log('THIS=', this);
-}
-// STORE THE ABOVE IN ANOTHER FUNCTION
-const myObj = {
-  func: whatIsThis,
-  color: 'Mangeta',
 };
 
-cat.dance('Salsa');
-const catsCopy = cat.dance;
-catsCopy('tango');
+cat.play('string', 'my pantleg', 'my shoe', 'a ball');
+// Oxen plays with string
+// Oxen plays with my pantleg
+// Oxen plays with my shoe
+// Oxen plays with a ball
 
-myObj.func();
-window.func();
+const dog = {
+  name: 'Jack',
+  breed: 'Long Boby',
+};
+
+// Call the CALL method on the function
+cat.play.call(dog, 'DIDI', 'DODO', 'DADA');
+// Jack plays with DIDI
+// Jack plays with DODO
+// Jack plays with DADA
+
+// const havenDV = cat.dance;
+// havenDV.call(cat, 'Salsa');
+
+// const dog = {
+//   name: 'Jack',
+//   breed: 'Long Boby',
+// };
+
+// havenDV.call(dog, 'Kwasa Kwasa');
+
+// havenDV.call(window, 'Lingala');
+// havenDV.call(cat, 'Mpere');
+
+// function printThis() {
+//   console.log('THIS ====> ', this);
+// }
+
+// printThis.call(cat);
