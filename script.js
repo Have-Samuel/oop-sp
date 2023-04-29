@@ -439,3 +439,14 @@ const cat = {
     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
   },
 };
+
+const havenDV = cat.dance;
+
+havenDV.call(cat, 'Salsa');
+
+const dog = {
+  name: 'Jack',
+  breed: 'Long Boby',
+};
+
+havenDV.call(dog, 'Kwasa Kwasa');
