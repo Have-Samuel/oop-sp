@@ -627,3 +627,23 @@ const wax = {
 document.querySelector('#btn').addEventListener('click', wax.greet.bind(wax));
 // VALUE of wax is not set to THIS
 // Only comes wheen we use bind
+
+const btnA = document.querySelector('#a');
+const btnB = document.querySelector('#b');
+const btnC = document.querySelector('#c');
+
+function popUp(msg) {
+  alert(`Secret Message is ${msg}.`);
+}
+// Before Using Bind
+btnA.addEventListener('click', function() {
+  popUp('BUTTON A SAYS HI!');
+});
+
+btnB.addEventListener('click', function() {
+  popUp('BUTTON B SAYS HI!');
+});
+
+btnC.addEventListener('click', function() {
+  popUp('BUTTON C SAYS HI!');
+});
