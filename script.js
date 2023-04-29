@@ -376,7 +376,61 @@
 // catsCopy('tango'); // And getting a different result.
 // Meow, I am undefined and I like tango!!.
 
-// THIS-WINDOW_ STUFF
+// // THIS-WINDOW_ STUFF
+// const cat = {
+//   name: 'Oxen',
+//   breed: 'French',
+//   dance(dance) {
+//     console.log('THIS IS:', this);
+//     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
+//   },
+// };
+
+// // catsCopy('tango');
+// // Meow, I am undefined and I like tango!!.
+// // cat.dance('tango');
+// // Meow, I am Oxen and I like tango!!.
+
+// // Another Function
+// function whatIsThis() {
+//   console.log('THIS=', this);
+// }
+// // STORE THE ABOVE IN ANOTHER FUNCTION
+// const myObj = {
+//   func: whatIsThis,
+//   color: 'Mangeta',
+// };
+
+// cat.dance('Salsa');
+// const catsCopy = cat.dance;
+// catsCopy('tango');
+
+// myObj.func();
+// // window.func();
+
+// // Strict Mode
+// // 'use strict';
+// class Cat {
+//   constructor(name, breed) {
+//     this.name = name;
+//     this.breed = breed;
+//   }
+
+//   dance(danceType) {
+//     console.log('THIS IS:', this);
+//     console.log(`Meow, I am ${this.name} and I like ${danceType}!!.`);
+//   }
+// }
+
+// const funk = new Cat('Funk', 'Italian');
+// funk.dance('Salsa');
+// // funk is on the left side of the dot which is the object
+
+// // If we Isolate the function
+// const funkDance = funk.dance;
+// funkDance('Salsa');
+
+// CALL KEYWORD
 const cat = {
   name: 'Oxen',
   breed: 'French',
@@ -385,47 +439,3 @@ const cat = {
     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
   },
 };
-
-// catsCopy('tango');
-// Meow, I am undefined and I like tango!!.
-// cat.dance('tango');
-// Meow, I am Oxen and I like tango!!.
-
-// Another Function
-function whatIsThis() {
-  console.log('THIS=', this);
-}
-// STORE THE ABOVE IN ANOTHER FUNCTION
-const myObj = {
-  func: whatIsThis,
-  color: 'Mangeta',
-};
-
-cat.dance('Salsa');
-const catsCopy = cat.dance;
-catsCopy('tango');
-
-myObj.func();
-// window.func();
-
-// Strict Mode
-// 'use strict';
-class Cat {
-  constructor(name, breed) {
-    this.name = name;
-    this.breed = breed;
-  }
-
-  dance(danceType) {
-    console.log('THIS IS:', this);
-    console.log(`Meow, I am ${this.name} and I like ${danceType}!!.`);
-  }
-}
-
-const funk = new Cat('Funk', 'Italian');
-funk.dance('Salsa');
-// funk is on the left side of the dot which is the object
-
-// If we Isolate the function
-const funkDance = funk.dance;
-funkDance('Salsa');
