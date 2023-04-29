@@ -489,11 +489,11 @@ const wax = {
     console.log('THIS IS:', this);
     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
   },
-  play: function(...toys) {
-    for (let toy of toys) {
-      console.log(`${this.name} plays with ${toy}`)
+  play(...toys) {
+    for (const toy of toys) {
+      console.log(`${this.name} plays with ${toy}`);
     }
-  }
+  },
 };
 // In previous examples, we have been calling the function immediately
 // const hen = wax.dance;
@@ -548,3 +548,60 @@ function applySalesTax(taxRate, price) {
 const applyCATax = applySalesTax.bind(null, 0.0725);
 applyCATax(0.0725);
 // 0.07775625
+
+// LAST EXAMPLE
+// const bobsMembership = {
+//   name: 'Bob',
+//   total: 250,
+//   // When method is inside the function
+//   collectMonthlyFee: function(fee) {
+//     const remaining = this.total - fee;
+//     this.total = remaining;
+//     return this.name + ' remaining balance;' + remaining;
+//   }
+// };
+
+// bobsMembership.collectMonthlyFee(50);
+
+const bobsMembership = {
+  name: 'Bob',
+  total: 250,
+  // When method is outside the function
+};
+
+function collectMonthlyFee(fee) {
+  const remaining = this.total - fee;
+  this.total = remaining;
+  return `${this.name} remaining balance;${remaining}`;
+}
+
+// Using the Logic on some other function
+const adrinesMembership = {
+  name: 'Adrine',
+  total: 899,
+};
+
+const collectBobsFee = collectMonthlyFee.bind(bobsMembership, 5);
+
+collectBobsFee();
+// 'Bob remaining balance;240'
+collectBobsFee();
+// 'Bob remaining balance;235'
+collectBobsFee();
+// 'Bob remaining balance;230'
+collectBobsFee();
+// 'Bob remaining balance;225'
+bobsMembership();
+// {name: 'Bob', total: 190}
+const collectAdrinsFee = collectMonthlyFee.bind(adrinesMembership, 20);
+
+collectAdrinsFee(20);
+// 'Adrine remaining balance;879'
+collectAdrinsFee(20);
+// 'Adrine remaining balance;859'
+collectAdrinsFee(20);
+// 'Adrine remaining balance;839'
+collectAdrinsFee(20);
+// 'Adrine remaining balance;819'
+
+// IF YOU DONT WANT TO PASS IN THE VALUE OF THIS THEN USE NULL
