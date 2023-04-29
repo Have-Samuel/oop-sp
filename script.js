@@ -496,5 +496,36 @@ const wax = {
   }
 };
 // In previous examples, we have been calling the function immediately
-const hen = wax.dance;
-hen.call(wax, 'dombolo');
+// const hen = wax.dance;
+// hen.call(wax, 'dombolo');
+
+const bdance = wax.dance;
+const bounceDance = bdance.bind(wax);
+bounceDance('dombolo');
+// Meow, I am Oxen and I like dombolo!!.
+bounceDance('Salsa');
+// Meow, I am Oxen and I like Salsa!!.
+bounceDance('Kwasa Kwasa');
+// Meow, I am Oxen and I like Kwasa Kwasa!!.
+
+// ANOTHER EXAMPLE OF OBJECTS
+const rocket = {
+  name: 'Falcon',
+  breed: 'Spacedog',
+};
+// Bind is not calling the function immediately
+// not called one time
+const rocketDance = wax.dance.bind(rocket);
+rocketDance('Hip hop');
+
+// Doubleingthe integrity of BIND method by using it twice
+// Add a method to the horse object
+const horse = {
+  name: 'Horse',
+  breed: 'Spacedog',
+  dance: rocketDance,
+};
+// We have bound the value of this to rocket
+// We have bound the value of this to horse
+horse.dance('Tegurara');
+// Meow, I am Falcon and I like Tegurara!!.
