@@ -438,15 +438,45 @@ const cat = {
     console.log('THIS IS:', this);
     console.log(`Meow, I am ${this.name} and I like ${dance}!!.`);
   },
+  play: function(...toys) {
+    for (let toy of toys) {
+      console.log(`${this.name} plays with ${toy}`)
+    }
+  }
 };
 
-const havenDV = cat.dance;
-
-havenDV.call(cat, 'Salsa');
+cat.play('string', 'my pantleg', 'my shoe', 'a ball');
+// Oxen plays with string
+// Oxen plays with my pantleg
+// Oxen plays with my shoe
+// Oxen plays with a ball
 
 const dog = {
   name: 'Jack',
   breed: 'Long Boby',
 };
 
-havenDV.call(dog, 'Kwasa Kwasa');
+// Call the CALL method on the function
+cat.play.call(dog, 'DIDI', 'DODO', 'DADA');
+// Jack plays with DIDI
+// Jack plays with DODO
+// Jack plays with DADA
+
+// const havenDV = cat.dance;
+// havenDV.call(cat, 'Salsa');
+
+// const dog = {
+//   name: 'Jack',
+//   breed: 'Long Boby',
+// };
+
+// havenDV.call(dog, 'Kwasa Kwasa');
+
+// havenDV.call(window, 'Lingala');
+// havenDV.call(cat, 'Mpere');
+
+// function printThis() {
+//   console.log('THIS ====> ', this);
+// }
+
+// printThis.call(cat);
